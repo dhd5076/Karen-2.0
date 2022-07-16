@@ -16,7 +16,7 @@ async function dbConnect() {
       bufferCommands: false,
     }
 
-    cached.promise = mongoose.connect("mongodb://localhost/karen", opts).then((mongoose) => {
+    cached.promise = mongoose.connect("mongodb://0.0.0.0:27017/karen", opts).then((mongoose) => {
       return mongoose
     })
   }
