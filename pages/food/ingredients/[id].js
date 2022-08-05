@@ -1,5 +1,3 @@
-import PageHeader from "../../../components/PageHeader";
-import IngredientListItem from "../../../components/Ingredient";
 
 import Router from 'next/router';
 
@@ -17,7 +15,6 @@ function IngredientsView({ingredient}) {
 
     return (
         <>
-            <PageHeader name={ingredient.name}/>
             <button onClick={handleDelete} class="bg-red-800 hover:bg-red-900 shadow-lg font-bold p-4 mt-2 text-gray-100 rounded">Delete</button>
         </>
     );

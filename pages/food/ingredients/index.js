@@ -1,56 +1,72 @@
-import PageHeader from "../../../components/PageHeader";
-import IngredientListItem from "../../../components/Ingredient";
 
-import Router from 'next/router';
+function IngredientsView() {
 
-function IngredientsView({ingredients}) {
-
-
-    const handleCreate = async(event)=> {
-
-        event.preventDefault();
-
-        const name = event.target.name.value;
-        fetch('/api/food/ingredient', {
-            method: 'POST', 
-            body: JSON.stringify({
-            name: name
-        }), headers: {
-            'Content-Type': 'application/json'
-          }})
-        .then(() => {
-            Router.reload()
-        })
-    }
 
     return (
         <>
-            <PageHeader name="Ingredients"/>
-            <ul className="bg-gray-900 my-4 rounded-lg p-4 text-gray-400 overflow-y-auto h-1/2">
-                {ingredients.map((ingredient) => {
-                    return <IngredientListItem ingredientID={ingredient._id} key={ingredient._id} name={ingredient.name}/>
-                })}
-            </ul>
-            <form onSubmit={handleCreate}>
-                <label htmlFor="name"> Name: </label>
-                <input type="text" id="name"/>
-                <button className="text-white m-2 bg-green-600 p-2 rounded-lg font-bold shadow-lg" type="submit">Create</button>
-            </form>
+            <div className="bg-white"> 
+                <div className="bg-gray px-6 py-4 text-2xl font-bold flex justify-between shadow-lg"> 
+                    <span className="my-auto">Current Stock</span>
+                    <span>
+                        <input type="text" name="q" className="rounded-lg bg-white shadow-inner p-2" />
+                        <a href="#" className="text-white p-2 bg-dark shadow-lg rounded-lg font-semibold align-middle ml-4"> Search </a>
+                    </span>
+                </div>
+                <div className="bg-white shadow-lg pb-4">
+                    <table className="table-auto w-full border-separate p-4">
+                        <thead className="text-xl">
+                            <tr>
+                                <th className="text-left"> Ingredient Name </th>
+                                <th className="text-right"> Case Cost </th>
+                                <th className="text-right"> Case Size </th>
+                                <th className="text-right"> On Hand </th>
+                                <th className="text-right"> Unit Type </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td className="text-left"> Black Beans </td>
+                                <td className="text-right"> $19.99 </td>
+                                <td className="text-right"> 120.0 </td>
+                                <td className="text-right"> 12.0 </td>
+                                <td className="text-right"> oz </td>
+                            </tr>
+
+                            <tr>
+                                <td className="text-left"> Black Beans </td>
+                                <td className="text-right"> $19.99 </td>
+                                <td className="text-right"> 120.0 </td>
+                                <td className="text-right"> 12.0 </td>
+                                <td className="text-right"> oz </td>
+                            </tr>
+
+                            <tr>
+                                <td className="text-left"> Black Beans </td>
+                                <td className="text-right"> $19.99 </td>
+                                <td className="text-right"> 120.0 </td>
+                                <td className="text-right"> 12.0 </td>
+                                <td className="text-right"> oz </td>
+                            </tr>
+
+                            <tr>
+                                <td className="text-left"> Black Beans </td>
+                                <td className="text-right"> $19.99 </td>
+                                <td className="text-right"> 120.0 </td>
+                                <td className="text-right"> 12.0 </td>
+                                <td className="text-right"> oz </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div className="w-full text-right"> 
+                        <a href="#" className="inline-block mt-4 mr-4 bg-primary text-white text-2xl rounded-lg shadow-lg p-2 font-semibold">
+                            Create New
+                        </a>
+                    </div>
+                </div> 
+            </div>
         </>
     );
   }
 
-export async function getServerSideProps() {
-    
-    const res = await fetch('http://localhost:3000/api/food/ingredient');
-    const data = await res.json();
-
-    return {
-        props: {
-            ingredients: data
-        }
-    }
-       
-}
 
 export default IngredientsView;

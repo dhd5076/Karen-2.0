@@ -5,26 +5,24 @@ import NavButton from './NavButton'
 
 export default function Layout({ children }) {
   return (
-    <body className="flex flex-row bg-slate-900 w-screen h-screen">
-       <div className='bg-slate-900 flex-none w-64 rounded'>
-            <ul className="bg-slate-700 p-4 rounded m-2 rounded-lg shadow-lg">
-                <li>
-                    <Link href="/">
-                        <a className="text-4xl font-bold flex mb-4 text-slate-900 shadow-lg bg-slate-300 p-2 rounded">
-                            <span> Karen </span>
-                        </a>
-                    </Link>
-                </li>
-                <NavLabel name="Food"/>
-                <NavButton name="Overview" href="/food/"/>
-                <NavButton name="Inventory" href="/food/inventory"/>
-                <NavButton name="Ingredients" href="/food/ingredients"/>
-                <NavButton name="Recipes" href="/food/recipes"/>
+    <body className="w-screen h-screen bg-white overflow-hidden">
+      <div className="bg-dark w-screen rounded-b-lg shadow-lg">
+        <a href="/food" className="inline-block text-6xl font-bold ml-6 my-4 text-white font-sans"> Karen </a>
+      </div>
+      <div className="flex h-full">
+        <div className='w-96 mt-0 shadow-lg rounded-lg bg-gray'>
+            <ul className="m-0 rounded mt-6 h-full">
+                <NavButton name="Dashboard" href="/food/"/>
+                <NavButton name="Pantry" href="/food/ingredients"/>
+                <NavButton name="Recipes" href="/food/ingredients"/>
+                <NavButton name="Inventory" href="/food/recipes"/>
+                <NavButton name="Settings" href="/food/recipes"/>
             </ul>
-       </div>
-       <div className="shadow-lg p-4 bg-slate-700 w-full h-full m-2 rounded-lg">
-        {children}
-       </div>
+        </div>
+        <div className="w-full h-full bg-white text-dark p-4 shadow-lg">
+          {children}
+        </div>
+      </div>
     </body>
   )
 }
