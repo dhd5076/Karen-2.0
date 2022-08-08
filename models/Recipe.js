@@ -5,7 +5,7 @@ const RecipeSchema = new mongoose.Schema({
         type: String,
         default: 'NONAME'
     },
-    quantity: {
+    servings: {
         type: Number,
         default: 0
     },
